@@ -24,6 +24,13 @@ module.exports = (err, req, res, next) => {
       })
       break;
 
+    case 'KartuKeluargaNotFound':
+      res.json({
+        statusCode: 404,
+        message: err.message
+      })
+      break;
+
     case 'SequelizeValidationError':
       res.json({
         statusCode: 400,

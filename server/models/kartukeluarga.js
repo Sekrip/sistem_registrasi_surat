@@ -33,6 +33,14 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    nama_lengkap: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          msg: 'Nama lengkap wajib diisi!'
+        }
+      }
+    },
     tanggal: {
       type: DataTypes.DATE,
       validate: {
@@ -124,7 +132,9 @@ module.exports = (sequelize, DataTypes) => {
     UserId: {
       type: DataTypes.INTEGER,
       validate:{
-        msg: 'ID penginput harus ada!'
+        notEmpty: {
+          msg: 'ID penginput harus ada!'
+        }
       }
     }
   }, { sequelize })

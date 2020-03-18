@@ -5,6 +5,7 @@ const authEmailToken = require('../middlewares/authEmailToken');
 const isUserExist = require('../middlewares/isUserExist');
 const isUserDeleted = require('../middlewares/isUserDeleted');
 
+router.get('/', authentication, UserController.getDataAdmin);
 router.post('/login', UserController.loginAdmin)
 router.post('/create', authentication, isUserDeleted, UserController.createAdmin)
 router.post('/request-change-password', UserController.requestChangePassword)

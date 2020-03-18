@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
     if(user != null){
       next()
     }else{
-      next(createError(404, { name: 'UserNotFound', message: 'Pengguna tidak terdaftar' }))
+      throw (createError(404, { name: 'UserNotFound', message: 'Pengguna tidak terdaftar' }))
     }
   } catch (error) {
     next(error)

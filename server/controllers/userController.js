@@ -25,6 +25,22 @@ class UserController {
     }
   }
 
+  static async getDataAdmin(req, res, next){
+    try {
+      const userList = await User.findAll({
+        attributes: {
+          exclude: ['password']
+        }
+      })
+      res.status(200).json({
+        statusCode: 200,
+        body: userList
+      })
+    } catch (error) {
+      next(error)
+    }
+  }
+
   static loginAdmin(req, res, next){
     const { email, password } = req.body
 
@@ -44,8 +60,8 @@ class UserController {
             }
 
             const access_token = jwtHelper.signToken(user)
-            res.status(201).json({
-              statusCode: 201,
+            res.status(200).json({
+              statusCode: 200,
               body: {
                 access_token,
                 user
